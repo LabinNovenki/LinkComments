@@ -181,7 +181,7 @@ export default {
   methods: {
     submitForm() {
       let data = {
-          id: this.ruleForm.userid,
+          userid: this.ruleForm.userid,
           name: this.ruleForm.username,
           address: this.ruleForm.address,
           set_time: this.ruleForm.set_time,
@@ -196,7 +196,7 @@ export default {
         .then((res) => {
           console.log(res.data);
           this.$router.push("/login");
-          if (res.rtCode !== "0") {
+          if (res.data.rtCode !== "0") {
             alert("注册失败2");
           }
           else {
