@@ -181,7 +181,7 @@ export default {
   methods: {
     submitForm() {
       let data = {
-        id: this.ruleForm.userid,
+        userid: this.ruleForm.userid,
         name: this.ruleForm.username,
         address: this.ruleForm.address,
         set_time: this.ruleForm.set_time,
