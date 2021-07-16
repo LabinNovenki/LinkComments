@@ -86,9 +86,12 @@ export default {
           }
         }).then(res => {
           console.log(res.data);
-          _this.userToken = 'Bearer' + res.data.data.token;
+          _this.userToken = res.data.data.token;
           _this.changeLogin({Authorization: _this.userToken });
-          _this.$router.push('/logon');
+          _this.$router.push({
+            path: '/get_url',
+            query: {name : _this.ruleForm2.username}
+          });
           alert('登录成功');
         }).catch(error => {
           alert('账号或密码错误');

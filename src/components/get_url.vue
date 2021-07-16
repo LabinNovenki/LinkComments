@@ -8,7 +8,7 @@
       <el-input
         placeholder="评论链接"
         v-model="input"
-        :disabled="true"
+        :disabled="false"
         style="width: 500px"
       >
       </el-input>
@@ -27,18 +27,19 @@ export default {
     get_url() {
       let _this = this;
       let data = {
-        id: this.$route.query.name,
+        user: this.$route.query.name
       };
       this.axios
-        .get("/", { params: data })
+        .get("http://localhost:8816/commentCode/getComment", { params: data })
         .then(function (response) {
+          JSON.stringify(response);
           console.log(response.data);
-          _this.input = response.data;
-          if (res.data.rtCode !== "0") {
+          // _this.input = response.data;
+          if (response.data.rtCode !== "0") {
             alert("获取失败");
           } else {
             alert("获取成功");
-            this.input = res.data.data;
+            _this.input = response.data.data;
           }
         })
         .catch((error) => {

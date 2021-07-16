@@ -9,10 +9,12 @@ const login = r => require.ensure([], () => r(require('@/components/login')), 'l
 const search = r => require.ensure([], () => r(require('@/components/search')), 'search');
 const logon = r => require.ensure([], () => r(require('@/components/logon')), 'logon');
 const rate_table = r => require.ensure([], () => r(require('@/components/rate_table')), 'rate_table');
+const get_url = r => require.ensure([], () => r(require('@/components/get_url')), 'get_url');
+const comment = r => require.ensure([], () => r(require('@/components/comment')), 'comment');
 
 
 const routes = [
-  { 
+  {
     path: '/',
     name: 'search',
     component: search,
@@ -32,12 +34,24 @@ const routes = [
     name: 'rate_table',
     component: rate_table,
   },
+  {
+    path: '/get_url',
+    name: 'get_url',
+    component: get_url,
+  },
+  {
+    path: '/comment',
+    name: 'comment',
+    component: comment,
+  }
 ]
 
 const router = new Router({
   routes,
   mode: 'history'
 });
+
+
 
 //导航守卫
 router.beforeEach((to, from, next) => {
@@ -51,6 +65,6 @@ router.beforeEach((to, from, next) => {
       next();
     }
   }
-}); 
+});
 
 export default router
