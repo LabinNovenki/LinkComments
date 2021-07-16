@@ -30,7 +30,7 @@ export default {
         user: this.$route.query.name
       };
       this.axios
-        .get("http://localhost:8816/commentCode/getComment", { params: data })
+        .get("http://localhost:8816//commentCode/saveCommentCode", { params: data })
         .then(function (response) {
           JSON.stringify(response);
           console.log(response.data);

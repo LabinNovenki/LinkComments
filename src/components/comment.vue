@@ -94,29 +94,29 @@ export default {
       this.$refs[formName].resetFields();
     },
     pushForm() {
-      let _this = this;
+
       let data = {
-        tokenid: this.$route.query.name,
-        textarea: this.$route.query.tokenid,
-        star: this.ruleForm.star
-      }
-      this.$axios.post(
-        "http://localhost:8816/merchant/add",
+        commentid: this.$route.query.tokenid,
+        comment: this.ruleForm.textarea,
+        // star: this.ruleForm.star
+      };
+      this.axios.post(
+        "http://localhost:8816//commentCode/commitComment",
         data
       )
       .then((res) => {
         console.log(res.data)
-        if (res.data !== 0) {
+        if (!res.data) {
           alert("该页面已经被其他用户评论过了");
-          this.$router.push("/get_url");
+          this.$router.push("/");
         } else {
           alert("评价成功！");
-          this.$router.push("/get_url");
+          this.$router.push("/");
         }
       }).catch((error) => {
-        alert("该页面已经被其他用户评论过了");
+        alert("提交错误");
         console.log(error);
-        this.$router.push("/get_url");
+        this.$router.push("/");
       })
     }
   }
